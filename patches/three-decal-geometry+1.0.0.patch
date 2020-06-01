@@ -1,0 +1,77 @@
+diff --git a/node_modules/three-decal-geometry/README.md b/node_modules/three-decal-geometry/README.md
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/Map-COL.jpg b/node_modules/three-decal-geometry/demo/assets/Map-COL.jpg
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/Map-NOR.jpg b/node_modules/three-decal-geometry/demo/assets/Map-NOR.jpg
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/Map-SPEC.jpg b/node_modules/three-decal-geometry/demo/assets/Map-SPEC.jpg
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/man.png b/node_modules/three-decal-geometry/demo/assets/man.png
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/pattern.jpg b/node_modules/three-decal-geometry/demo/assets/pattern.jpg
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/snapshot.jpg b/node_modules/three-decal-geometry/demo/assets/snapshot.jpg
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/splatter.png b/node_modules/three-decal-geometry/demo/assets/splatter.png
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/white-splatter.png b/node_modules/three-decal-geometry/demo/assets/white-splatter.png
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/assets/wrinkle-normal.jpg b/node_modules/three-decal-geometry/demo/assets/wrinkle-normal.jpg
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/intersection.html b/node_modules/three-decal-geometry/demo/intersection.html
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/js/OrbitControls.js b/node_modules/three-decal-geometry/demo/js/OrbitControls.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/js/Three.js b/node_modules/three-decal-geometry/demo/js/Three.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/js/dat.gui.min.js b/node_modules/three-decal-geometry/demo/js/dat.gui.min.js
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/demo/splatter.html b/node_modules/three-decal-geometry/demo/splatter.html
+old mode 100644
+new mode 100755
+diff --git a/node_modules/three-decal-geometry/index.js b/node_modules/three-decal-geometry/index.js
+old mode 100644
+new mode 100755
+index a8c51c5..9e3f122
+--- a/node_modules/three-decal-geometry/index.js
++++ b/node_modules/three-decal-geometry/index.js
+@@ -275,7 +275,21 @@ module.exports = function(THREE) {
+ 
+ 		}
+ 		
+-		this.computeDecal();
++		this.compute = function()
++		{
++			if(mesh.geometry.attributes)
++			{
++				mesh.geometry = new THREE.Geometry().fromBufferGeometry(mesh.geometry);
++				this.computeDecal();
++				mesh.geometry.dispose();
++			}
++			else
++			{
++				this.computeDecal();
++			}
++		}
++
++		this.compute();
+ 
+ 	}
+ 
+diff --git a/node_modules/three-decal-geometry/src/THREE.DecalGeometry.js b/node_modules/three-decal-geometry/src/THREE.DecalGeometry.js
+old mode 100644
+new mode 100755
