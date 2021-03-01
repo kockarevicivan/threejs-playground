@@ -23,7 +23,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "stats.js": "^0.17.0",
-    "three": "^0.104.0",
+    "three": "^0.125.0",
     "three-css2drender": "^1.0.0",
     "three-decal-geometry": "^1.0.0",
     "three-obj-loader": "^1.1.3",
